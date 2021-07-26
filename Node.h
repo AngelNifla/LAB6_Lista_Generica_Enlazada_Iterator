@@ -26,10 +26,9 @@ public:
     void set_next(Node*_next){
         next = _next;
     }
-    Node* get_next(){
+    Node<T>* get_next(){
         return next;
     };
-
 
     //sobrecarga del operador (<<)
     friend std::ostream &operator <<(std::ostream &out,const Node<T> &C){

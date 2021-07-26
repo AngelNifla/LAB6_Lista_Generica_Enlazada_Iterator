@@ -2,6 +2,7 @@
 #define __LINKEDLIST_H__
 
 #include "Node.h"
+#include "Iterator.h"
 
 template <typename T>
 class LinkedList
@@ -40,5 +41,4 @@ public:
     ~LinkedList();
 };
 
-#endif
- 
+#endif 
