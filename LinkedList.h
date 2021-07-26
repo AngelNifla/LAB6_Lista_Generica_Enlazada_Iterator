@@ -32,6 +32,11 @@ public:
     Node<T>* gethead() const{
         return head;
     }
+    
+    //funciones begin() y end()
+    Node<T>* begin();
+    Node<T>* end();
+    
     ~LinkedList();
 };
 

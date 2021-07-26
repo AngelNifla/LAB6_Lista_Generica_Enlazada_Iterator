@@ -10,6 +10,28 @@ LinkedList<T>::LinkedList()
     head = NULL;
 }
 
+//funcion degin(), retorna la primera(cabeza) nodo de la lista
+template <typename T>
+Node<T>* LinkedList<T>::begin()
+{
+    if(head){
+        return head;
+    }else{
+        return NULL;
+    }
+};
+
+//funcion end(), retorna el ultimo(cola) nodo de la lista
+template <typename T>
+Node<T>* LinkedList<T>::end()
+{
+    Node<T>* bus=head;
+    for(int i=1; i<size;i++){
+        bus=bus->get_next();
+    }
+    return bus;
+};
+
 //funcion para iniciar e insertar nodos a la lista en base al tamaño requerido
 template <typename T>
 void LinkedList<T>::insert_node_size(int _size)
