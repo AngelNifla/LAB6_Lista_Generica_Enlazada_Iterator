@@ -3,33 +3,35 @@
 #include <iostream>
 
 //constructor principal
-
-LinkedList::LinkedList()
+template <typename T>
+LinkedList<T>::LinkedList()
 {
     size = NULL;
     head = NULL;
 }
 
 //funcion para iniciar e insertar nodos a la lista en base al tamaño requerido
-void LinkedList::insert_node_size(int _size)
+template <typename T>
+void LinkedList<T>::insert_node_size(int _size)
 {
     for (int i = 0; i < _size; i++) {
-        add_end(NULL);
+        add_end("");    ////FALTA QUE FUNCIONE CON INT Y STRING, SIN CAMBIAR.
     }
 }
 
 //funcion para insertar un nodo al inicio de la lista
-void LinkedList::add_head(int _elem)
+template<typename T>
+void LinkedList<T>::add_head(T _elem)
 {
-    Node *new_Node = new Node (_elem);
-    Node *tempo = head;
-
+    Node<T> *new_Node = new Node<T> (_elem);
+    Node<T> *tempo = head;
+ 
     if (!head) {
         head = new_Node;
     } else {
         new_Node->set_next(head);
         head = new_Node;
-
+ 
         while (tempo) {
             tempo = tempo->get_next();
         }
@@ -38,11 +40,12 @@ void LinkedList::add_head(int _elem)
 }
 
 //funcion para insertar un nodo al final de la lista
-void LinkedList::add_end(int _elem)
+template<typename T>
+void LinkedList<T>::add_end(T _elem)
 {
-    Node *new_node = new Node (_elem);
-    Node *tem = head;
-
+    Node<T> *new_node = new Node<T> (_elem);
+    Node<T> *tem = head;
+ 
     if (!head) {
         head = new_node;
     } else {
@@ -55,13 +58,14 @@ void LinkedList::add_end(int _elem)
 }
 
 // insertar un nodo por posicion
-void LinkedList::add_by_position(int _pos,int _elem)
+template <typename T>
+void LinkedList<T>::add_by_position(int _pos,T _elem)
 {
-
-    Node *New_node = new Node (_elem);
-    Node *tempor = head;
-    Node *auxi;
-
+    
+    Node<T> *New_node = new Node<T> (_elem);
+    Node<T> *tempor = head;
+    Node<T> *auxi;
+ 
     if (head == NULL) {
         head = New_node;
         size++;
@@ -70,7 +74,7 @@ void LinkedList::add_by_position(int _pos,int _elem)
     }else if(_pos == 1){
         New_node->set_next(head);
         head = New_node;
-
+ 
         while (tempor) {
             tempor = tempor->get_next();
         }
@@ -88,10 +92,11 @@ void LinkedList::add_by_position(int _pos,int _elem)
     }
 }
 
-// Modificar un nodo de la lista
-void LinkedList::modifi_by_position(int _pos,int _elem)
+// Modificar un nodo de la lista por pocision
+template <typename T>
+void LinkedList<T>::modifi_by_position(int _pos,T _elem)
 {
-    Node *auxn = head;
+    Node<T> *auxn = head;
 
     if (_pos < 1 || _pos > size) {
         std::cout << "Fuera de rango \n";
@@ -101,18 +106,19 @@ void LinkedList::modifi_by_position(int _pos,int _elem)
                 auxn->modific(_elem);
             }
             auxn = auxn->get_next();
-
+            
         }
     }
 }
 
 // Eliminar un nodo por posicion
-void LinkedList::remove_by_position(int _pos)
+template <typename T>
+void LinkedList<T>::remove_by_position(int _pos)
 {
-    Node *temp = head;
-    Node *temp1 = temp->get_next();
-    Node *auxi;
-
+    Node<T> *temp = head;
+    Node<T> *temp1 = temp->get_next();
+    Node<T> *auxi;
+ 
     if (head == NULL) {
         std::cout<<"\n LISTA VACIA! \n";
     }else if(_pos < 1 || _pos > size){
@@ -133,9 +139,10 @@ void LinkedList::remove_by_position(int _pos)
 }
 
 //imprimir lista de nodos
-void LinkedList::print()
+template <typename T>
+void LinkedList<T>::print()
 {
-    Node *auxp = head;
+    Node<T> *auxp = head;
     if (!head) {
         std::cout << "La Lista está vacía \n";
     } else {
@@ -149,20 +156,22 @@ void LinkedList::print()
 }
 
 //sobrecarga del operador (<<)
-std::ostream& operator << (std::ostream &o, const LinkedList &_DA){
-    Node *auxso= _DA.gethead();
+template <typename T>
+std::ostream& operator << (std::ostream &o, const LinkedList<T> &_DA){
+    Node<T> *auxso= _DA.gethead();
 
     for(int i=0; i<_DA.getsize(); i++){
 		o << "Nodo-> " << "Elemento: " <<auxso->get_elem()<<" Siguiente: " << auxso->get_next() <<"\n";
         auxso = auxso->get_next();
 	}
-
+    
     return o;
 }
 
 //Destructor
-LinkedList::~LinkedList()
+template <typename T>
+LinkedList<T>::~LinkedList()
 {
     head->~Node();
     head = 0;
-} 
+}

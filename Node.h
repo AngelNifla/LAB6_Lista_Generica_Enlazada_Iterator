@@ -2,24 +2,25 @@
 #define  __NODE_H__
 
 
+template<typename T>
 class Node
 {
 private:
-    int elem;
+    T elem;
     Node *next;
 public:
     Node();             //constructor principal
-    Node(int _elem);    //constructor pot parametro
+    Node(T _elem);    //constructor por parametro
+    
+    
 
-
-
-    void modific(int _elem);    //funcion para imprimir un nodo
+    void modific(T _elem);    //funcion para imprimir un nodo
 
     void print();       //funcion para immprimir un nodo
-    int get_elem(){
+    T get_elem(){
         return elem;
     };
-    void set_elem(int _elem){
+    void set_elem(T _elem){
         elem = _elem;
     }
     void set_next(Node*_next){
@@ -31,7 +32,7 @@ public:
 
 
     //sobrecarga del operador (<<)
-    friend std::ostream &operator <<(std::ostream &out,const Node &C){
+    friend std::ostream &operator <<(std::ostream &out,const Node<T> &C){
         out << "Nodo-> " << "Elemento: " << C.elem << " Siguiente: " << C.next <<"\n";
         return out;
     };
@@ -40,4 +41,4 @@ public:
 };
 
 
-#endif  
+#endif

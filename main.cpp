@@ -1,4 +1,6 @@
+  
 #include <iostream>
+
 #include "LinkedList.h"
 #include "LinkedList.cpp"
 
@@ -7,16 +9,16 @@ using namespace std;
 int main()
 {
     /*
-    Node N1(15);
+    Node<int> N1(15);
     cout<<N1<<endl;
-    LinkedList L0;
+    LinkedList<int> L0;
     L0.insert_node(8);
     L0.insert_node(12);
     cout<<L0<<endl;
      */ 
-    LinkedList L1;
+    LinkedList<string> L1;
 
-    int elem;
+    string elem;
     int size;
     int pos;
 
@@ -28,7 +30,7 @@ int main()
 
     cout << "Lista Inicial" << endl;
     L1.print();
-
+    
     cout << "Agrega un elemento al inicio de lista: " << endl;
     cin >> elem;
     L1.add_head(elem);
@@ -54,11 +56,13 @@ int main()
     cin>> elem;
     L1.modifi_by_position(pos,elem);
     L1.print();
-
+    
     cout << "Elimina un elemento por posicion: " << endl;
     cin >> pos;
     L1.remove_by_position(pos);
     L1.print();
+ 
 
+  
     return 0;
-}  
+}
